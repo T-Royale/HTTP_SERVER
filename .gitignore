@@ -53,3 +53,14 @@ dkms.conf
 
 # debug information files
 *.dwo
+
+# .vscode folder
+.vscode
+
+# bin and obj folders
+bin
+obj
+
+# other
+todo.md
+test
