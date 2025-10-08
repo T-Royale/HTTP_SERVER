@@ -1,4 +1,5 @@
-#pragma once
+#ifndef TCP_H
+#define TCP_H
 
 #include <arpa/inet.h>
 #include <string.h>
@@ -19,3 +20,5 @@ typedef struct {
 
 server_status_e bind_tcp_port(tcp_server* server, int port);
 int accept_client(int fd);
+
+#endif
