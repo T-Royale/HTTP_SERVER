@@ -20,5 +20,5 @@ int main(int argc, char *argv[]){
     close(client_fd);
     close(server.socket_fd);
 
-    return 0;
+    return EXIT_SUCCESS;
 }
