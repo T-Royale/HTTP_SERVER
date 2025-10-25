@@ -8,6 +8,13 @@ server_status_e bind_tcp_port(tcp_server* server, int port){
         debug_log("Server creation failed\n");
         return SERVER_SOCKET_ERROR;
     }
+
+    int value = 1;
+    if(setsockopt(server->socket_fd, SOL_SOCKET, SO_REUSEADDR, &value, sizeof(value)) == -1){
+        debug_log("Unable to set REUSEADDR socket option\n");
+        return SERVER_SOCKOPT_ERROR;
+    }
+
     server->address.sin_family = AF_INET;
     server->address.sin_addr.s_addr = INADDR_ANY;
     server->address.sin_port = htons(port);

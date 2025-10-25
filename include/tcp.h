@@ -1,16 +1,16 @@
 #ifndef TCP_H
 #define TCP_H
 
+#include "main.h"
 #include <arpa/inet.h>
-#include <string.h>
-#include <unistd.h>
 
 typedef enum {
     SERVER_OK,
     SERVER_SOCKET_ERROR,
     SERVER_BIND_ERROR,
     SERVER_LISTEN_ERROR,
-    SERVER_ACCEPT_ERROR
+    SERVER_ACCEPT_ERROR,
+    SERVER_SOCKOPT_ERROR
 } server_status_e;
 
 typedef struct {
