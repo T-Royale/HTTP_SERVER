@@ -31,11 +31,24 @@ int main(int argc, char *argv[]){
         }
         debug_log("Client connected\n");
 
-        http_request req;
+        http_request req = {0};
         if(read_http_request(client_fd, &req) == -1){
             printf("Invalid http request received\n");
             return 0;
         }
+
+        if(parse_http_headers(req.buffer, &req) != HTTP_PARSE_OK){
+            debug_log("Failed to read or parse HTTP_HEADERS\n");
+            close(client_fd);
+            return 0;
+        }
+
+        printf("Parsed HTTP headers:\n");
+        for(size_t i = 0; i < req.header_count; i++){
+            printf("\t%s: %s\n", req.headers[i]->key, req.headers[i]->value);
+        }
+
+        free_http_headers(&req);
 
         close(client_fd);
     }

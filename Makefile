@@ -3,6 +3,7 @@ CFLAGS = -Wall -Werror -Wextra -Iinclude -g
 
 SRC_DIR = src
 OBJ_DIR = obj
+TEST_DIR = tests
 INCLUDE_DIR = include
 BIN_DIR = bin
 
@@ -26,3 +27,6 @@ $(BIN_DIR):
 
 clean: 
 	rm -fr $(OBJ_DIR) $(BIN_DIR)
+
+Test_1-Parse_HTTP_REQ:
+	gcc $(CFLAGS) -o $(TEST_DIR)/test_1-parse_http_req $(SRC_DIR)/http.c $(TEST_DIR)/parseRequest.c
